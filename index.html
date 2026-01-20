@@ -1,10 +1,171 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Hello World Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bark and Bourbon | Coming Soon</title>
+  <meta name="description" content="Bark and Bourbon: woodworking plans paired with a food recipe and a cocktail recipe. Coming soon." />
+
+  <!-- Optional: a simple favicon (replace with your own later) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%AA%B5%3C/text%3E%3C/svg%3E" />
+
+  <style>
+    :root{
+      --bg: #f6f2ea;
+      --paper: #fbf8f2;
+      --text: #1b1b1b;
+      --muted: #5a5a5a;
+      --border: rgba(0,0,0,.10);
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --radius: 18px;
+      --max: 920px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      color:var(--text);
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      background:
+        radial-gradient(1200px 800px at 20% 0%, rgba(0,0,0,.04), transparent 60%),
+        radial-gradient(900px 700px at 80% 20%, rgba(0,0,0,.035), transparent 55%),
+        var(--bg);
+    }
+
+    .wrap{
+      min-height:100%;
+      display:grid;
+      place-items:center;
+      padding: clamp(20px, 4vw, 48px);
+    }
+
+    .card{
+      width:min(var(--max), 100%);
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(22px, 4vw, 48px);
+      position: relative;
+      overflow:hidden;
+    }
+
+    /* subtle paper texture without images */
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(0deg, rgba(0,0,0,.02), transparent 45%),
+        repeating-linear-gradient(90deg, rgba(0,0,0,.015) 0 1px, transparent 1px 6px);
+      opacity:.25;
+      pointer-events:none;
+    }
+
+    .content{
+      position: relative;
+      display:grid;
+      gap: 18px;
+      justify-items:center;
+      text-align:center;
+    }
+
+    .logo{
+      width: min(520px, 86%);
+      height: auto;
+      display:block;
+      /* helps keep it crisp */
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    h1{
+      margin: 6px 0 0;
+      font-size: clamp(26px, 3.2vw, 44px);
+      letter-spacing: .02em;
+    }
+
+    p{
+      margin:0;
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: clamp(15px, 1.6vw, 18px);
+      line-height: 1.5;
+    }
+
+    .tagline{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top: 6px;
+    }
+    .pill{
+      border:1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      background: rgba(255,255,255,.35);
+      backdrop-filter: blur(4px);
+    }
+
+    .divider{
+      width: min(620px, 92%);
+      height: 1px;
+      background: var(--border);
+      margin: 10px 0 2px;
+    }
+
+    footer{
+      margin-top: 14px;
+      font-size: 12px;
+      color: rgba(0,0,0,.55);
+    }
+
+    /* Accessibility: prefers reduced motion (we barely use any, but still) */
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior:auto !important; }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Hello, World!</h1>
-    <p>Hello, again World.</p>
+  <main class="wrap">
+    <section class="card" aria-label="Bark and Bourbon coming soon">
+      <div class="content">
+        <!-- Replace this file with your simple Concept 1 logo -->
+        <img
+          class="logo"
+          src="bark-and-bourbon-logo.png"
+          alt="Bark and Bourbon"
+          loading="eager"
+        />
+
+        <h1>Coming Soon</h1>
+        <p>
+          Woodworking plans paired with a food recipe and a cocktail recipe. One theme, three builds.
+          The only thing we’re missing is the part where the site exists.
+        </p>
+
+        <div class="tagline" aria-label="Categories">
+          <span class="pill">Wood</span>
+          <span class="pill">Food</span>
+          <span class="pill">Bourbon</span>
+        </div>
+
+        <div class="divider" role="presentation"></div>
+
+        <footer>
+          © <span id="year"></span> Bark and Bourbon
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Update the year so nobody has to remember time exists.
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
